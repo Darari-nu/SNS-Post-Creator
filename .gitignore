@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Output files (optional - コメントアウトして履歴を残すことも可能)
+# 03_OUTPUT/*.md
+# 03_OUTPUT/*.tsv
+
+# Temporary files
+*.tmp
+*.log
