@@ -4,12 +4,13 @@
 
 ## 概要
 
-ユーザーが提供した文章を元に、𝕏（旧Twitter）とThreads向けの投稿案を各10個、合計20個自動生成します。
+ユーザーが提供した文章を元に、𝕏（旧Twitter）とThreads向けの投稿案を各10個、合計20個 + 風刺画プロンプト5個を自動生成します。
 
 ### 生成される投稿案の特徴
 - **バズの法則に基づく**: 稀有性、プロセスエコノミー、感情トリガーなど、SNSでバズるための要素を組み込み
 - **多様なトーン**: 真面目、カジュアル、ユーモラス、共感型など、様々なアプローチ
 - **プラットフォーム最適化**: 𝕏は280文字以内、Threadsはストーリー性重視
+- **風刺画プロンプト（NEW!）**: JTCあるあるをイラストで表現するNano Banana Pro用プロンプト5個
 
 ## ディレクトリ構成
 
@@ -130,6 +131,13 @@ python save_posts.py [JSONファイルパス]
       "buzz_rule": "プロセスエコノミー",
       "emotion_trigger": "感動"
     }
+  ],
+  "satire_images": [
+    {
+      "title": "弊社のAI活用会議",
+      "prompt": "Simple illustration of three office workers...",
+      "composition": "左: 部長..., 中央: 課長..., 右: 新入社員..."
+    }
   ]
 }
 ```
@@ -137,7 +145,8 @@ python save_posts.py [JSONファイルパス]
 ## 技術スタック
 
 - **実行環境**: Claude Code
-- **生成AI**: Claude (Sonnet 4.5)
+- **テキスト生成AI**: Claude (Sonnet 4.5)
+- **画像生成AI**: Nano Banana Pro (Gemini 3 Pro Image)
 - **出力フォーマット**: Markdown, TSV
 - **スクリプト言語**: Python 3
 
