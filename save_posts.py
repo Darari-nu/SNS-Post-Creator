@@ -59,6 +59,16 @@ class SNSPostSaver:
                     f.write(f"**感情トリガー:** {post['emotion_trigger']}\n\n")
                     f.write("---\n\n")
 
+            # 風刺画プロンプト
+            if "satire_images" in posts:
+                f.write("## 風刺画プロンプト（Nano Banana Pro用）\n\n")
+                for i, satire in enumerate(posts["satire_images"], 1):
+                    f.write(f"### 風刺画 {i}\n\n")
+                    f.write(f"**タイトル:** {satire['title']}\n\n")
+                    f.write(f"**風刺画プロンプト:**\n```\n{satire['prompt']}\n```\n\n")
+                    f.write(f"**構成説明:**\n{satire['composition']}\n\n")
+                    f.write("---\n\n")
+
         print(f"✅ MDファイルを保存しました: {md_path}")
         return md_path
 
@@ -81,6 +91,14 @@ class SNSPostSaver:
                 for i, post in enumerate(posts["threads_posts"], 1):
                     f.write(f"{i}\tThreads\t{post['content']}\t{post['char_count']}\t")
                     f.write(f"{post['buzz_rule']}\t{post['emotion_trigger']}\n")
+
+            # 風刺画（タイトルのみ）
+            if "satire_images" in posts:
+                f.write("\n# 風刺画\n")
+                f.write("No.\tType\tTitle\tPrompt (First 100 chars)\n")
+                for i, satire in enumerate(posts["satire_images"], 1):
+                    prompt_preview = satire['prompt'][:100] + "..." if len(satire['prompt']) > 100 else satire['prompt']
+                    f.write(f"{i}\t風刺画\t{satire['title']}\t{prompt_preview}\n")
 
         print(f"✅ TSVファイルを保存しました: {tsv_path}")
         return tsv_path
@@ -112,6 +130,13 @@ def create_sample_posts() -> Dict[str, List[Dict]]:
                 "char_count": 45,
                 "buzz_rule": "プロセスエコノミー",
                 "emotion_trigger": "感動"
+            }
+        ],
+        "satire_images": [
+            {
+                "title": "弊社のAI活用会議",
+                "prompt": "Simple illustration of three office workers sitting at meeting table. Left: middle-aged manager with confused expression, labeled \"AI使ったことない\" in Japanese text bubble. Center: senior manager with stern face, labeled \"AI反対派\" in Japanese text bubble. Right: young employee with secretive smile, labeled \"こっそりAI使ってる\" in Japanese text bubble. Minimalist style, clean lines, soft colors, satirical tone, manga-inspired character design, white background.",
+                "composition": "- 左: 部長（中年、困惑した表情）- ラベル「AI使ったことない」\n- 中央: 課長（厳しい顔）- ラベル「AI反対派」\n- 右: 新入社員（秘密の笑顔）- ラベル「こっそりAI使ってる」\n- 背景: 会議室、ミニマルスタイル\n- スタイル: 風刺画、シンプルな線画、マンガ風"
             }
         ]
     }

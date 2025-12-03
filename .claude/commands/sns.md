@@ -6,6 +6,7 @@
 ユーザーが提供した文章を元に、以下を生成してください：
 - **𝕏（旧Twitter）用投稿案**: 10個（280文字以内厳守）
 - **Threads用投稿案**: 10個（𝕏より長めでストーリー性重視）
+- **風刺画プロンプト（Nano Banana Pro用）**: 5個（JTCあるあるをイラストで表現）
 
 ## バズる要素（必ず考慮すること）
 
@@ -107,7 +108,21 @@ AIには出せない、尖ったアイデアを提供する
    - ストーリー性を重視
    - **オリジナリティガイドラインを遵守**
 
-4. **オリジナリティチェック**
+4. **風刺画プロンプトの生成**
+   - 5個の風刺画プロンプトを生成
+   - JTC（日本の伝統的企業）あるあるをテーマに
+   - イラスト風の風刺画（フォトリアルではない）
+   - キャラクター配置とラベル（日本語）を明確に指定
+   - シンプルで分かりやすい構成
+
+   **風刺画プロンプトの書き方:**
+   - スタイル: `Simple illustration`, `minimalist style`, `satirical tone`, `manga-inspired`
+   - キャラクター配置: `Left:`, `Center:`, `Right:` で明確に
+   - 日本語ラベル: `labeled "○○" in Japanese text bubble` で指定
+   - 表情や姿勢を具体的に記述
+   - 背景はシンプルに（`white background`, `minimal office setting`）
+
+5. **オリジナリティチェック**
    生成後、以下をチェックしてください：
    - 元の文章と同じ表現を使っている投稿案を特定
    - 50%ルールを守れているか確認
@@ -116,7 +131,7 @@ AIには出せない、尖ったアイデアを提供する
      - 「この投稿案は元の文章と類似度が高いため、再生成しますか？」と確認
      - ユーザーが希望すれば、該当する投稿案のみ再生成
 
-5. **出力形式**
+6. **出力形式**
    チェック完了後、以下の形式で出力してください：
 
 ## 出力フォーマット
@@ -148,6 +163,29 @@ AIには出せない、尖ったアイデアを提供する
 ---
 
 [投稿案 2〜10も同様の形式で]
+
+### 風刺画プロンプト（Nano Banana Pro用）
+
+#### 風刺画 1
+**タイトル:** [風刺画のタイトル]
+
+**風刺画プロンプト:**
+```
+[英語プロンプトをここに記載]
+例: Simple illustration of three office workers sitting at meeting table. Left: middle-aged manager with confused expression, labeled "AI使ったことない" in Japanese text bubble. Center: senior manager with stern face, labeled "AI反対派" in Japanese text bubble. Right: young employee with secretive smile, labeled "こっそりAI使ってる" in Japanese text bubble. Minimalist style, clean lines, soft colors, satirical tone, manga-inspired character design, white background.
+```
+
+**構成説明:**
+- [キャラクターや要素の配置と説明]
+- 例: 左: 部長（中年、困惑した表情）- ラベル「AI使ったことない」
+- 例: 中央: 課長（厳しい顔）- ラベル「AI反対派」
+- 例: 右: 新入社員（秘密の笑顔）- ラベル「こっそりAI使ってる」
+- 背景: 会議室、ミニマルスタイル
+- スタイル: 風刺画、シンプルな線画、マンガ風
+
+---
+
+[風刺画 2〜5も同様の形式で]
 
 ## 最後に
 
