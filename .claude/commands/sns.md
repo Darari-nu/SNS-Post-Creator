@@ -108,19 +108,23 @@ AIには出せない、尖ったアイデアを提供する
    - ストーリー性を重視
    - **オリジナリティガイドラインを遵守**
 
-4. **風刺画プロンプトの生成**
-   - 5個の風刺画プロンプトを生成
-   - JTC（日本の伝統的企業）あるあるをテーマに
-   - イラスト風の風刺画（フォトリアルではない）
-   - キャラクター配置とラベル（日本語）を明確に指定
-   - シンプルで分かりやすい構成
+4. **風刺画プロンプトの生成（世界最高峰の風刺画家として）**
 
-   **風刺画プロンプトの書き方:**
-   - スタイル: `Simple illustration`, `minimalist style`, `satirical tone`, `manga-inspired`
-   - キャラクター配置: `Left:`, `Center:`, `Right:` で明確に
-   - 日本語ラベル: `labeled "○○" in Japanese text bubble` で指定
-   - 表情や姿勢を具体的に記述
-   - 背景はシンプルに（`white background`, `minimal office setting`）
+   **あなたのロール:**
+   「現代社会の矛盾」を鋭く切り取る、世界最高峰の風刺画家兼アートディレクターとして行動してください。
+
+   **制約事項:**
+   - **表面的な描写禁止**: 記事の内容をそのまま絵にするのではなく、必ず「比喩」「メタファー」「誇張」を用いて変換すること
+   - **スタイルの多様性**: 5つの案は、それぞれ全く異なる画風（SF、宗教画、ドット絵、劇画、レトロ広告、浮世絵、現代アートなど）にすること
+   - **ギャップの創出**: 「美しい画風 × 残酷な現実」「ハイテクな世界 × アナログな行動」など、強いコントラストを入れること
+   - **日本語テキストの挿入**: 画像内に、その状況を一言で表す「痛烈なキャッチコピー」や「セリフ」をデザインの一部として組み込む指示を入れること
+
+   **生成プロセス:**
+   1. **矛盾の抽出**: テキストから「最もナンセンスな点」「誰かが我慢している点」を特定する
+   2. **メタファー変換**: その矛盾を物理的な物体や状況に置き換える
+      - 例：承認フロー → 無限階段、コミュ不足 → 毒ガス、働き方改革 → 檻の鍵を内側から閉める
+   3. **スタイル適用**: そのメタファーが最も映える、あるいは最もミスマッチで面白い画風を選ぶ
+   4. **日本語テキスト配置**: 看板、吹き出し、UI、ポスターなど、画像内に自然に組み込む
 
 5. **オリジナリティチェック**
    生成後、以下をチェックしてください：
@@ -167,21 +171,31 @@ AIには出せない、尖ったアイデアを提供する
 ### 風刺画プロンプト（Nano Banana Pro用）
 
 #### 風刺画 1
-**タイトル:** [風刺画のタイトル]
+**タイトル:** [風刺画のタイトル（例：DX音頭）]
 
-**風刺画プロンプト:**
-```
-[英語プロンプトをここに記載]
-例: Simple illustration of three office workers sitting at meeting table. Left: middle-aged manager with confused expression, labeled "AI使ったことない" in Japanese text bubble. Center: senior manager with stern face, labeled "AI反対派" in Japanese text bubble. Right: young employee with secretive smile, labeled "こっそりAI使ってる" in Japanese text bubble. Minimalist style, clean lines, soft colors, satirical tone, manga-inspired character design, white background.
-```
+**風刺のポイント:**
+[何をどう皮肉ったのか簡潔に説明。例：「DX推進」と言いながらExcelとFAXから抜け出せない日本企業の矛盾を、昭和の盆踊り風に表現]
 
-**構成説明:**
-- [キャラクターや要素の配置と説明]
-- 例: 左: 部長（中年、困惑した表情）- ラベル「AI使ったことない」
-- 例: 中央: 課長（厳しい顔）- ラベル「AI反対派」
-- 例: 右: 新入社員（秘密の笑顔）- ラベル「こっそりAI使ってる」
-- 背景: 会議室、ミニマルスタイル
-- スタイル: 風刺画、シンプルな線画、マンガ風
+**画風・スタイル:**
+[具体的な画風を指定。例：昭和レトロポスター風、サイバーパンク風、宗教画風、ドット絵風、劇画風、浮世絵風など]
+
+**構図の詳細:**
+- **メイン**: [中心となる人物や対象の具体的な行動。例：スーツ姿の中年サラリーマンたちが輪になって踊っている]
+- **背景・装飾**: [世界観を補強する背景。例：背景には巨大なExcelの表とFAX機が神々しく光っている]
+- **矛盾の演出**: [笑いを生むための具体的な矛盾点。例：最新のAIロボットが隅で埃をかぶって放置されている]
+
+**画像内テキスト（日本語）:**
+[画像の中に配置する日本語テキスト。看板、吹き出し、UIなどの具体的な文言]
+- 例: 大きな看板「DX推進中」、吹き出し「Excelが一番」、ポスター「FAX廃止は来年度」
+
+**Nano Banana Pro プロンプト:**
+```
+[DALL-E 3やMidjourneyなどの画像生成AI用の具体的な英語プロンプト]
+[画風、照明、構図、テキスト内容を含めること]
+
+例:
+Retro Showa-era poster style illustration. Middle-aged Japanese salarymen in suits dancing in a circle, arms raised joyfully. Background shows giant glowing Excel spreadsheet and fax machine like religious icons. In corner, modern AI robot covered in dust and cobwebs, abandoned. Large banner text "DX推進中" (DX Implementation in Progress) in Japanese. Speech bubbles show "Excelが一番" (Excel is the best). Small poster on wall reads "FAX廃止は来年度" (Fax abolition next fiscal year) in Japanese. Warm orange and yellow tones, halftone dots, vintage Japanese commercial art style, satirical tone, 1970s aesthetic.
+```
 
 ---
 

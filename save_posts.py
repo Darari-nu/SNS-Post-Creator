@@ -65,8 +65,40 @@ class SNSPostSaver:
                 for i, satire in enumerate(posts["satire_images"], 1):
                     f.write(f"### 風刺画 {i}\n\n")
                     f.write(f"**タイトル:** {satire['title']}\n\n")
-                    f.write(f"**風刺画プロンプト:**\n```\n{satire['prompt']}\n```\n\n")
-                    f.write(f"**構成説明:**\n{satire['composition']}\n\n")
+
+                    # 風刺のポイント（あれば）
+                    if 'satire_point' in satire:
+                        f.write(f"**風刺のポイント:**\n{satire['satire_point']}\n\n")
+
+                    # 画風・スタイル（あれば）
+                    if 'style' in satire:
+                        f.write(f"**画風・スタイル:**\n{satire['style']}\n\n")
+
+                    # 構図の詳細（あれば）
+                    if 'composition_details' in satire:
+                        f.write(f"**構図の詳細:**\n")
+                        if isinstance(satire['composition_details'], dict):
+                            if 'main' in satire['composition_details']:
+                                f.write(f"- **メイン**: {satire['composition_details']['main']}\n")
+                            if 'background' in satire['composition_details']:
+                                f.write(f"- **背景・装飾**: {satire['composition_details']['background']}\n")
+                            if 'contradiction' in satire['composition_details']:
+                                f.write(f"- **矛盾の演出**: {satire['composition_details']['contradiction']}\n")
+                        else:
+                            f.write(f"{satire['composition_details']}\n")
+                        f.write("\n")
+
+                    # 画像内テキスト（あれば）
+                    if 'text_in_image' in satire:
+                        f.write(f"**画像内テキスト（日本語）:**\n{satire['text_in_image']}\n\n")
+
+                    # Nano Banana Proプロンプト
+                    f.write(f"**Nano Banana Pro プロンプト:**\n```\n{satire['prompt']}\n```\n\n")
+
+                    # 旧形式の構成説明（互換性のため残す）
+                    if 'composition' in satire:
+                        f.write(f"**構成説明:**\n{satire['composition']}\n\n")
+
                     f.write("---\n\n")
 
         print(f"✅ MDファイルを保存しました: {md_path}")
@@ -134,9 +166,16 @@ def create_sample_posts() -> Dict[str, List[Dict]]:
         ],
         "satire_images": [
             {
-                "title": "弊社のAI活用会議",
-                "prompt": "Simple illustration of three office workers sitting at meeting table. Left: middle-aged manager with confused expression, labeled \"AI使ったことない\" in Japanese text bubble. Center: senior manager with stern face, labeled \"AI反対派\" in Japanese text bubble. Right: young employee with secretive smile, labeled \"こっそりAI使ってる\" in Japanese text bubble. Minimalist style, clean lines, soft colors, satirical tone, manga-inspired character design, white background.",
-                "composition": "- 左: 部長（中年、困惑した表情）- ラベル「AI使ったことない」\n- 中央: 課長（厳しい顔）- ラベル「AI反対派」\n- 右: 新入社員（秘密の笑顔）- ラベル「こっそりAI使ってる」\n- 背景: 会議室、ミニマルスタイル\n- スタイル: 風刺画、シンプルな線画、マンガ風"
+                "title": "DX音頭",
+                "satire_point": "「DX推進」と言いながらExcelとFAXから抜け出せない日本企業の矛盾を、昭和の盆踊り風に表現",
+                "style": "昭和レトロポスター風",
+                "composition_details": {
+                    "main": "スーツ姿の中年サラリーマンたちが輪になって踊っている",
+                    "background": "背景には巨大なExcelの表とFAX機が神々しく光っている",
+                    "contradiction": "最新のAIロボットが隅で埃をかぶって放置されている"
+                },
+                "text_in_image": "- 大きな看板「DX推進中」\n- 吹き出し「Excelが一番」\n- ポスター「FAX廃止は来年度」",
+                "prompt": "Retro Showa-era poster style illustration. Middle-aged Japanese salarymen in suits dancing in a circle, arms raised joyfully. Background shows giant glowing Excel spreadsheet and fax machine like religious icons. In corner, modern AI robot covered in dust and cobwebs, abandoned. Large banner text \"DX推進中\" (DX Implementation in Progress) in Japanese. Speech bubbles show \"Excelが一番\" (Excel is the best). Small poster on wall reads \"FAX廃止は来年度\" (Fax abolition next fiscal year) in Japanese. Warm orange and yellow tones, halftone dots, vintage Japanese commercial art style, satirical tone, 1970s aesthetic."
             }
         ]
     }
